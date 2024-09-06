@@ -35,10 +35,9 @@ for item in data["items"]:
     date = item["date"]
     markdown_filename = os.path.join(output_directory, f"{date}.md")
 
-    markdown_content = f"**Date:** {item['date']}\n\n"
-    markdown_content += f"**Overall Mood:** #{item['rating']}\n\n"
+    markdown_content = f"**Overall Mood:** #mood/{item['rating']}\n\n"
 
-    emotions = [f"#{emotion}" for emotion in item["emotions"]]
+    emotions = [f"#emotions/{emotion}" for emotion in item["emotions"]]
     markdown_content += f"**Emotions:** {', '.join(emotions)}\n\n"
 
     tags = [
@@ -46,9 +45,9 @@ for item in data["items"]:
         for tag in item.get("tags", [])
         if tag["id"] in tag_mapping
     ]
-    tag_tags = [f"#{tag}" for tag in tags]
+    tag_tags = [f"#activities/{tag}" for tag in tags]
     markdown_content += (
-        f"**Tags:** {', '.join(tag_tags) if tag_tags else 'No tags provided'}\n\n"
+        f"**Activies:** {', '.join(tag_tags) if tag_tags else 'No tags provided'}\n\n"
     )
 
     markdown_content += (
