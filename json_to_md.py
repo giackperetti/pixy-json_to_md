@@ -36,7 +36,6 @@ for item in data["items"]:
 
     markdown_content = f"# Entry for {date}\n\n"
     markdown_content += f"**Date:** {item['date']}\n\n"
-    markdown_content += f"**DateTime:** {item['dateTime']}\n\n"
     markdown_content += f"**Rating:** {item['rating']}\n\n"
     markdown_content += f"**Emotions:** {', '.join(item['emotions'])}\n\n"
 
