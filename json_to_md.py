@@ -21,11 +21,11 @@ tag_mapping = {
     "9": "studying",
     "10": "homework",
     "11": "gym",
-    "12": "watching series/movies",
-    "13": "computer science stuff",
+    "12": "watching_series/movies",
+    "13": "computer_science stuff",
     "14": "nature",
-    "15": "linux stuff",
-    "16": "social media",
+    "15": "linux_stuff",
+    "16": "social_media",
     "17": "school",
     "18": "travel",
     "19": "shopping",
@@ -35,8 +35,7 @@ for item in data["items"]:
     date = item["date"]
     markdown_filename = os.path.join(output_directory, f"{date}.md")
 
-    markdown_content = f"# Entry for {date}\n\n"
-    markdown_content += f"**Date:** {item['date']}\n\n"
+    markdown_content = f"**Date:** {item['date']}\n\n"
     markdown_content += f"**Rating:** {item['rating']}\n\n"
 
     emotions = [f"#{emotion}" for emotion in item["emotions"]]
