@@ -31,13 +31,81 @@ tag_mapping = {
     "19": "shopping",
 }
 
+good_emotions = {
+    "calm",
+    "balanced",
+    "content",
+    "happy",
+    "comfortable",
+    "excited",
+    "optimistic",
+    "energized",
+    "motivated",
+    "focused",
+    "inspired",
+    "hopeful",
+    "enthusiastic",
+    "proud",
+    "grateful",
+    "loved",
+    "relieved",
+    "satisfied",
+    "thankful",
+    "appreciated",
+    "supported",
+    "connected",
+    "productive",
+}
+
+neutral_emotions = {
+    "bored",
+    "tired",
+    "uneasy",
+    "concerned",
+    "confused",
+    "heard",
+    "nervous",
+}
+
+bad_emotions = {
+    "unmotivated",
+    "frustrated",
+    "disappointed",
+    "annoyed",
+    "depressed",
+    "irritated",
+    "sad",
+    "angry",
+    "exhausted",
+    "fragile",
+    "hopeless",
+    "insecure",
+    "overwhelmed",
+    "pessimistic",
+    "stressed",
+    "vulnerable",
+    "weak",
+}
+
+
+def classify_emotion(emotion):
+    if emotion in good_emotions:
+        return f"#emotions/good/{emotion}"
+    elif emotion in neutral_emotions:
+        return f"#emotions/neutral/{emotion}"
+    elif emotion in bad_emotions:
+        return f"#emotions/bad/{emotion}"
+    else:
+        return f"#emotions/unknown/{emotion}"
+
+
 for item in data["items"]:
     date = item["date"]
     markdown_filename = os.path.join(output_directory, f"{date}.md")
 
     markdown_content = f"**Overall Mood:** #mood/{item['rating']}\n\n"
 
-    emotions = [f"#emotions/{emotion}" for emotion in item["emotions"]]
+    emotions = [classify_emotion(emotion) for emotion in item["emotions"]]
     markdown_content += f"**Emotions:** {', '.join(emotions)}\n\n"
 
     tags = [
@@ -47,7 +115,7 @@ for item in data["items"]:
     ]
     tag_tags = [f"#activities/{tag}" for tag in tags]
     markdown_content += (
-        f"**Activies:** {', '.join(tag_tags) if tag_tags else 'No tags provided'}\n\n"
+        f"**Activities:** {', '.join(tag_tags) if tag_tags else 'No tags provided'}\n\n"
     )
 
     markdown_content += (
