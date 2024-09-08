@@ -21,7 +21,7 @@ tag_mapping = {
     "9": "studying",
     "10": "homework",
     "11": "gym",
-    "12": "watching_series/movies",
+    "12": "watching_series-movies",
     "13": "computer_science",
     "14": "nature",
     "15": "linux_stuff",
